@@ -23,22 +23,14 @@ export const mutations = {
 export const actions = {
   async getDogList({ commit }) {
     await this.$axios
-      .$get("https://dog.ceo/api/breeds/list/all", {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-        },
-      })
+      .$get("/api/breeds/list/all")
       .then((response) => {
         return response.message;
       })
       .then((data) => {
         for (const key in data) {
           this.$axios
-            .$get(`https://dog.ceo/api/breed/${key}/images/random/1`, {
-              headers: {
-                "Access-Control-Allow-Origin": "*",
-              },
-            })
+            .$get(`/api/breed/${key}/images/random/1`)
             .then((response) => {
               commit("SET_DOG_LIST", {
                 name: key,
@@ -53,36 +45,20 @@ export const actions = {
   },
 
   async getDogImage({ commit }) {
-    const { message } = await this.$axios.$get(
-      "https://dog.ceo/api/breed/hound/images",
-      {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-        },
-      }
-    );
+    const { message } = await this.$axios.$get("/api/breed/hound/images");
     commit("SET_DOG_IMAGE", message);
   },
 
   async getSubBreed({ commit }, param) {
     const { message } = await this.$axios.$get(
-      `https://dog.ceo/api/breed/${param}/images/random/20`,
-      {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-        },
-      }
+      `/api/breed/${param}/images/random/20`
     );
     commit("SET_SUB_BREED", message);
   },
 
   async getInputBreed({ commit }, param) {
     await this.$axios
-      .$get(`https://dog.ceo/api/breed/${param}/images/random`, {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-        },
-      })
+      .$get(`/api/breed/${param}/images/random`)
       .then((response) => {
         commit("SET_INPUT_BREED", response.message);
       })
