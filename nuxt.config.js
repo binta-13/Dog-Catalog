@@ -52,10 +52,10 @@ module.exports = {
     extend(config, ctx) {},
     babel: { compact: true },
   },
-  axios: {
-    // Do away with the baseUrl when using proxy
-    proxy: true,
-  },
+  // axios: {
+  //   // Do away with the baseUrl when using proxy
+  //   proxy: true,
+  // },
   // proxy: {
   //   // Simple proxy
   //   "/api/": {
