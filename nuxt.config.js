@@ -56,11 +56,11 @@ module.exports = {
     // Do away with the baseUrl when using proxy
     proxy: true,
   },
-  proxy: {
-    // Simple proxy
-    "/api/": {
-      target: "https://dog.ceo/api/",
-      pathRewrite: { "^/api/": "" },
-    },
-  },
+  // proxy: {
+  //   // Simple proxy
+  //   "/api/": {
+  //     target: "https://dog.ceo/api/",
+  //     pathRewrite: { "^/api/": "" },
+  //   },
+  // },
 };
