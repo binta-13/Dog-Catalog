@@ -4,6 +4,7 @@ module.exports = {
   /*
    ** Headers of the page
    */
+  target: "static",
   head: {
     title: pkg.name,
     meta: [
