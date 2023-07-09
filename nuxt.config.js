@@ -38,6 +38,7 @@ module.exports = {
     // Doc: https://bootstrap-vue.js.org/docs/
     "bootstrap-vue/nuxt",
     "@nuxtjs/axios",
+    "@nuxtjs/proxy",
   ],
   buildModules: ["@nuxtjs/composition-api/module"],
   store: true,
@@ -50,5 +51,16 @@ module.exports = {
      */
     extend(config, ctx) {},
     babel: { compact: true },
+  },
+  axios: {
+    // Do away with the baseUrl when using proxy
+    proxy: true,
+  },
+  proxy: {
+    // Simple proxy
+    "/api/": {
+      target: "https://dog.ceo/api/",
+      pathRewrite: { "^/api/": "" },
+    },
   },
 };
